@@ -110,6 +110,7 @@ MonoBehaviour:
   - {fileID: 4640541398676761710}
   - {fileID: 5941079194972733350}
   - {fileID: 2133828282797179947}
+  - {fileID: 209895124915851921}
 --- !u!1 &2775937577077630332
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2425341826033277233}
-  - component: {fileID: 1159233863151235510}
+  - component: {fileID: 209895124915851921}
   m_Layer: 0
   m_Name: PlayerTagAdapter
   m_TagString: Untagged
@@ -306,7 +307,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 554941653323134281}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1159233863151235510
+--- !u!114 &209895124915851921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,10 +316,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5878829191816227673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16038d607d40f64a924cd0e3d2a370e, type: 3}
+  m_Script: {fileID: 11500000, guid: f6aed7ac731cc2e449f6f8e63e76e5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: {x: 0, y: 0, z: 0}
+  _preset:
+    Transform: {fileID: 6027388383362869948}
 --- !u!1 &6390532037396264749
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class BulletInstaller : MonoInstaller
 		var bulletPool = new BulletPool(bulletPrefabs, _poolSize, _poolParent, Container);
 		Container.Bind<BulletPool>().FromInstance(bulletPool).AsSingle();
 
-		Container.Bind<IBulletFactory>().To<BulletSpawner>().AsSingle()
+		Container.Bind<IBulletFactory>().To<BulletFactory>().AsSingle()
 			.WithArguments(bulletPool, _world);
 	}
 }

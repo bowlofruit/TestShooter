@@ -1,7 +1,7 @@
 using DefaultEcs;
 using UnityEngine;
 
-public class BulletTypeComponentAdapter : EntityBaseComponent<BulletTypeComponent>
+public class BulletTypeAdapter : EntityBaseComponent<BulletTypeComponent>
 {
 	[SerializeField] private BulletType _bulletType;
 

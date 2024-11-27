@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &62337731
+--- !u!1 &407070135
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,40 +130,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 62337732}
-  - component: {fileID: 62337733}
+  - component: {fileID: 407070136}
+  - component: {fileID: 407070137}
   m_Layer: 0
-  m_Name: WeaponSystem
+  m_Name: BulletPoolTagAdapter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &62337732
+--- !u!4 &407070136
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62337731}
+  m_GameObject: {fileID: 407070135}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1156786224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &62337733
+--- !u!114 &407070137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62337731}
+  m_GameObject: {fileID: 407070135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48810425ed85abf40a3c937b01bc3e67, type: 3}
+  m_Script: {fileID: 11500000, guid: dd51d8b2890955f43b254da7b4bde8fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &425533548
@@ -214,7 +214,7 @@ MonoBehaviour:
   _explosiveBulletPrefab: {fileID: 8533397118109082127, guid: 155844d1ff3c2fd4f9fe9ee67738648d, type: 3}
   _piercingBulletPrefab: {fileID: 4092492884109856242, guid: 5825625910c8b414c827ac56c8eac5c3, type: 3}
   _poolSize: 10
-  _poolParent: {fileID: 62337732}
+  _poolParent: {fileID: 1682967328}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,8 +340,8 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 1944734438}
   - {fileID: 1020623967}
-  - {fileID: 1922074345}
   - {fileID: 425533550}
+  - {fileID: 1922074345}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -501,6 +501,69 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!1 &1156786223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1156786224}
+  m_Layer: 0
+  m_Name: Adapters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1156786224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156786223}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.223072, y: 0.6269976, z: 0.045810178}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 407070136}
+  m_Father: {fileID: 2037995849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1682967327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682967328}
+  m_Layer: 0
+  m_Name: BulletPoolParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1682967328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682967327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2037995849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922074344
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +652,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd53d165e27ea8f48ae60d016ab011cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2037995848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037995849}
+  - component: {fileID: 2037995851}
+  - component: {fileID: 2037995850}
+  m_Layer: 0
+  m_Name: BulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037995849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037995848}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1156786224}
+  - {fileID: 1682967328}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2037995850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037995848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea9430cd07f9fc408f62bdc22f0f58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Adapters:
+  - {fileID: 407070137}
+--- !u!114 &2037995851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037995848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500df117fe813854cb872314fb0e4be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entityBase: {fileID: 2037995850}
+  EntityId: 0
 --- !u!1001 &606964585140863734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -653,5 +779,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1111577763}
   - {fileID: 606964585140863734}
-  - {fileID: 62337732}
+  - {fileID: 2037995849}
   - {fileID: 811724466}

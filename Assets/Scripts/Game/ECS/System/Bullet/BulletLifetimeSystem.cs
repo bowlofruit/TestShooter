@@ -3,9 +3,9 @@ using DefaultEcs.System;
 
 public class BulletLifetimeSystem : AEntitySetSystem<float>
 {
-	private readonly BulletSpawner _bulletSpawner;
+	private readonly IBulletFactory _bulletSpawner;
 
-	public BulletLifetimeSystem(World world, BulletSpawner bulletSpawner) : base(world.GetEntities().
+	public BulletLifetimeSystem(World world, IBulletFactory bulletSpawner) : base(world.GetEntities().
         With<GameObjectComponent>().
         With<LifetimeComponent>().
         With<BulletTypeComponent>()

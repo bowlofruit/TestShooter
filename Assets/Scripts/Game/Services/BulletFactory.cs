@@ -2,13 +2,13 @@
 using UnityEngine;
 using Zenject;
 
-public class BulletSpawner : IBulletFactory
+public class BulletFactory : IBulletFactory
 {
 	private readonly BulletPool _bulletPool;
 	private readonly World _world;
 
 	[Inject]
-	public BulletSpawner(BulletPool bulletPool, World world)
+	public BulletFactory(BulletPool bulletPool, World world)
 	{
 		_bulletPool = bulletPool;
 		_world = world;

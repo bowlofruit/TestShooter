@@ -22,6 +22,6 @@ public class BulletMovementSystem : AEntitySetSystem<float>
 		ref var speedComponent = ref entity.Get<SpeedComponent>();
 		ref var directionComponent = ref entity.Get<DirectionComponent>();
 
-		transformComponent.Transform.position += speedComponent.Speed * deltatime * directionComponent.Direction;
+        transformComponent.Transform.position += speedComponent.Speed * deltatime * directionComponent.Direction;
 	}
 }

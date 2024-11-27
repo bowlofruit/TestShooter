@@ -21,7 +21,6 @@ public class BulletPool
 
 			for (int i = 0; i < initSize; i++)
 			{
-				Debug.Log($"Instantiating bullet prefab for {bulletType}");
 				var bullet = _container.InstantiatePrefab(_prefabs[bulletType], _poolParent);
 				bullet.SetActive(false);
 				_poolDict[bulletType].Push(bullet);
