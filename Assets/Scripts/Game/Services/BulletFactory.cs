@@ -1,4 +1,5 @@
 ﻿using DefaultEcs;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -6,6 +7,7 @@ public class BulletFactory : IBulletFactory
 {
 	private readonly BulletPool _bulletPool;
 	private readonly World _world;
+	private readonly Dictionary<BulletType, Entity> _bulletEntities = new Dictionary<BulletType, Entity>();
 
 	[Inject]
 	public BulletFactory(BulletPool bulletPool, World world)
@@ -19,13 +21,20 @@ public class BulletFactory : IBulletFactory
 		GameObject bulletObject = _bulletPool.GetBullet(bulletType);
 		bulletObject.transform.position = position;
 
-		var entity = _world.CreateEntity();
-		entity.Set(new GameObjectComponent { Value = bulletObject });
-		entity.Set(new SpeedComponent { Speed = speed });
-		entity.Set(new DirectionComponent { Direction = direction });
-		entity.Set(new DamageComponent { Damage = damage });
-		entity.Set(new LifetimeComponent { RemainingTime = lifetime });
-		entity.Set(new BulletTypeComponent { Type = bulletType });
+		if (!_bulletEntities.ContainsKey(bulletType))
+		{
+			var entity = _world.CreateEntity();
+			entity.Set(new GameObjectComponent { Value = bulletObject });
+			_bulletEntities[bulletType] = entity;
+		}
+
+		var bulletEntity = _bulletEntities[bulletType];
+
+		bulletEntity.Set(new SpeedComponent { Speed = speed });
+		bulletEntity.Set(new DirectionComponent { Direction = direction });
+		bulletEntity.Set(new DamageComponent { Damage = damage });
+		bulletEntity.Set(new LifetimeComponent { RemainingTime = lifetime });
+		bulletEntity.Set(new BulletTypeComponent { Type = bulletType });
 
 		return bulletObject;
 	}

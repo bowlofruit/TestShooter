@@ -6,10 +6,6 @@ public class BulletMovementSystem : AEntitySetSystem<float>
 	private readonly IInputService _inputService;
 
 	public BulletMovementSystem(World world, IInputService inputService) : base(world.GetEntities()
-		.With<TransformComponent>()
-		.With<DamageComponent>()
-		.With<SpeedComponent>()
-		.With<DirectionComponent>()
 		.With<BulletTypeComponent>()
 		.AsSet())
 	{

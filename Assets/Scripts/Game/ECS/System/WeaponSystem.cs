@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using DefaultEcs.System;
 using DefaultEcs;
 
@@ -6,23 +6,29 @@ public class WeaponSystem : AEntitySetSystem<float>
 {
 	private readonly IBulletFactory _bulletFactory;
 	private readonly IInputService _inputService;
-	private readonly Entity _playerEntity;
+	private readonly World _world;
+	private Entity _playerEntity;
 
 	public WeaponSystem(World world, IBulletFactory bulletFactory, IInputService inputService) : base (world.GetEntities()
 		.With<BulletPoolTagComponent>()
 		.AsSet())
 	{
+		_world = world;
 		_bulletFactory = bulletFactory;
 		_inputService = inputService;
-
-		var playerEntities = world.GetEntities().With<PlayerTagComponent>().AsSet();
-		var enumerator = playerEntities.GetEntities().GetEnumerator();
-
-		_playerEntity = enumerator.MoveNext() ? enumerator.Current : default;
 	}
 
 	protected override void Update(float deltaTime, in Entity entity)
 	{
+		if (_playerEntity == default)
+		{
+			var playerEntities = _world.GetEntities().With<PlayerTagComponent>().AsSet();
+			var enumerator = playerEntities.GetEntities().GetEnumerator();
+
+			_playerEntity = enumerator.MoveNext() ? enumerator.Current : default;
+			return;
+		}
+
 		int shootInput = _inputService.ShootInput;
 		switch (shootInput)
 		{

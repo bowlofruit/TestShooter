@@ -10,14 +10,14 @@ public class EntityBaseComponent<T> : ABaseAdapter where T : struct
 	{
 		if (entity.Has<T>())
 		{
-			Debug.LogError($"Component already exists in entry {typeof(T)}", gameObject);
-
-			return;
+			Debug.LogWarning($"Component already exists in entry {typeof(T)}", gameObject);
 		}
+		else
+		{
+			entity.Set<T>();
 
-		entity.Set<T>();
-
-		World = world;
-		Entity = entity;
+			World = world;
+			Entity = entity;
+		}
 	}
 }

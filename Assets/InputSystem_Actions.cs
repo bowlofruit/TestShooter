@@ -109,9 +109,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""Shoot1"",
                     ""type"": ""Button"",
                     ""id"": ""c861ad93-33c5-42d1-99dd-e8931b13c25d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot2"",
+                    ""type"": ""Button"",
+                    ""id"": ""828552e5-c1a7-4eb9-b206-3dd4372aee5b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot3"",
+                    ""type"": ""Button"",
+                    ""id"": ""1106cc92-8770-461a-8268-d8376a93e7e5"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -511,29 +529,29 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Shoot1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1e8adaaa-120c-4e0e-9ac7-ab2c850dbca3"",
+                    ""id"": ""363718d0-6736-40b9-84f2-e9dd384808d9"",
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Shoot2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""509a8c58-44ff-4273-9283-55c525a2ca39"",
+                    ""id"": ""43d454f9-65f8-417b-9dd4-65bcf3a2568a"",
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Shoot3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1130,7 +1148,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Shoot1 = m_Player.FindAction("Shoot1", throwIfNotFound: true);
+        m_Player_Shoot2 = m_Player.FindAction("Shoot2", throwIfNotFound: true);
+        m_Player_Shoot3 = m_Player.FindAction("Shoot3", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1219,7 +1239,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Previous;
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Shoot1;
+    private readonly InputAction m_Player_Shoot2;
+    private readonly InputAction m_Player_Shoot3;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1233,7 +1255,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Previous => m_Wrapper.m_Player_Previous;
         public InputAction @Next => m_Wrapper.m_Player_Next;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Shoot1 => m_Wrapper.m_Player_Shoot1;
+        public InputAction @Shoot2 => m_Wrapper.m_Player_Shoot2;
+        public InputAction @Shoot3 => m_Wrapper.m_Player_Shoot3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1270,9 +1294,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Shoot.started += instance.OnShoot;
-            @Shoot.performed += instance.OnShoot;
-            @Shoot.canceled += instance.OnShoot;
+            @Shoot1.started += instance.OnShoot1;
+            @Shoot1.performed += instance.OnShoot1;
+            @Shoot1.canceled += instance.OnShoot1;
+            @Shoot2.started += instance.OnShoot2;
+            @Shoot2.performed += instance.OnShoot2;
+            @Shoot2.canceled += instance.OnShoot2;
+            @Shoot3.started += instance.OnShoot3;
+            @Shoot3.performed += instance.OnShoot3;
+            @Shoot3.canceled += instance.OnShoot3;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1304,9 +1334,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
+            @Shoot1.started -= instance.OnShoot1;
+            @Shoot1.performed -= instance.OnShoot1;
+            @Shoot1.canceled -= instance.OnShoot1;
+            @Shoot2.started -= instance.OnShoot2;
+            @Shoot2.performed -= instance.OnShoot2;
+            @Shoot2.canceled -= instance.OnShoot2;
+            @Shoot3.started -= instance.OnShoot3;
+            @Shoot3.performed -= instance.OnShoot3;
+            @Shoot3.canceled -= instance.OnShoot3;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1498,7 +1534,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnPrevious(InputAction.CallbackContext context);
         void OnNext(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
+        void OnShoot1(InputAction.CallbackContext context);
+        void OnShoot2(InputAction.CallbackContext context);
+        void OnShoot3(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

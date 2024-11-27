@@ -8,16 +8,16 @@ public class SystemInstaller : MonoInstaller
 	private IInputService _inputService;
 	private IBulletFactory _bulletFactory;
 
-	private ISystem<float> CreateUpdateSystem => new SequentialSystem<float>
-		(
-			new WeaponSystem(_world, _bulletFactory, _inputService),
-			new BulletLifetimeSystem(_world, _bulletFactory)
-		);
-
 	private ISystem<float> CreateFixedUpdateSystem => new SequentialSystem<float>
 		(
 			new PlayerMovementSystem(_world, _inputService),
 			new BulletMovementSystem(_world, _inputService)
+		);
+
+	private ISystem<float> CreateUpdateSystem => new SequentialSystem<float>
+		(
+			new WeaponSystem(_world, _bulletFactory, _inputService),
+			new BulletLifetimeSystem(_world, _bulletFactory)
 		);
 
 	private ISystem<float> CreateLateUpdateSystem => new SequentialSystem<float>();
@@ -32,8 +32,8 @@ public class SystemInstaller : MonoInstaller
 
 	public override void InstallBindings()
 	{
-		Container.BindInterfacesAndSelfTo<SystemUpdater>().FromInstance(new SystemUpdater(CreateUpdateSystem)).AsSingle();
 		Container.BindInterfacesAndSelfTo<SystemFixedUpdater>().FromInstance(new SystemFixedUpdater(CreateFixedUpdateSystem)).AsSingle();
+		Container.BindInterfacesAndSelfTo<SystemUpdater>().FromInstance(new SystemUpdater(CreateUpdateSystem)).AsSingle();
 		Container.BindInterfacesAndSelfTo<SystemLateUpdater>().FromInstance(new SystemLateUpdater(CreateLateUpdateSystem)).AsSingle();
 	}
 }

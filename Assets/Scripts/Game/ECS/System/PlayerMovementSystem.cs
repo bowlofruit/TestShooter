@@ -9,6 +9,7 @@ public class PlayerMovementSystem : AEntitySetSystem<float>
 	public PlayerMovementSystem(World world, IInputService inputService) : base(world.GetEntities()
 		.With<TransformComponent>()
 		.With<SpeedComponent>()
+		.With<PlayerTagComponent>()
 		.AsSet())
 	{
 		_inputService = inputService;
@@ -17,10 +18,11 @@ public class PlayerMovementSystem : AEntitySetSystem<float>
 	protected override void Update(float deltatime, in Entity entity)
 	{
 		ref var transformComponent = ref entity.Get<TransformComponent>();
-		ref var movementComponent = ref entity.Get<SpeedComponent>();
+		ref var speedComponent = ref entity.Get<SpeedComponent>();
+		ref var directionComponent = ref entity.Get<DirectionComponent>();
 
-		var direction = _inputService.MoveInput;
+		directionComponent.Direction = _inputService.MoveInput;
 
-		transformComponent.Transform.position += new Vector3(direction.x, direction.y, 0) * movementComponent.Speed * deltatime;
+		transformComponent.Transform.position += new Vector3(directionComponent.Direction.x, directionComponent.Direction.y, 0) * speedComponent.Speed * deltatime;
 	}
 }

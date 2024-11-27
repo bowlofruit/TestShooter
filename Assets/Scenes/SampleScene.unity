@@ -213,7 +213,7 @@ MonoBehaviour:
   _normalBulletPrefab: {fileID: 1681917399192640139, guid: 62f834aa5274c9b46bb2f5d1f9fd3357, type: 3}
   _explosiveBulletPrefab: {fileID: 8533397118109082127, guid: 155844d1ff3c2fd4f9fe9ee67738648d, type: 3}
   _piercingBulletPrefab: {fileID: 4092492884109856242, guid: 5825625910c8b414c827ac56c8eac5c3, type: 3}
-  _poolSize: 10
+  _poolSize: 50
   _poolParent: {fileID: 1682967328}
 --- !u!1 &519420028
 GameObject:

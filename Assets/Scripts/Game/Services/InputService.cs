@@ -9,9 +9,9 @@ public class InputService : IInputService
 	{
 		get
 		{
-			if (_playerInputActions.Player.Shoot.WasPressedThisFrame()) return 1;
-			if (_playerInputActions.Player.Shoot.WasPressedThisFrame()) return 2;
-			if (_playerInputActions.Player.Shoot.WasPressedThisFrame()) return 3;
+			if (_playerInputActions.Player.Shoot1.WasPressedThisFrame()) return 1;
+			if (_playerInputActions.Player.Shoot2.WasPressedThisFrame()) return 2;
+			if (_playerInputActions.Player.Shoot3.WasPressedThisFrame()) return 3;
 			return 0;
 		}
 	}
