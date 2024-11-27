@@ -3,5 +3,5 @@
 public interface IInputService
 {
 	public Vector2 MoveInput { get; }
-	public Vector2 LookInput { get; }
+	public int ShootInput { get; }
 }

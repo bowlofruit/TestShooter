@@ -1,23 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class BulletPool 
 {
     private readonly Dictionary<BulletType, Stack<GameObject>> _poolDict = new Dictionary<BulletType, Stack<GameObject>>();
     private readonly Dictionary<BulletType, GameObject> _prefabs;
     private readonly Transform _poolParent;
+	private readonly DiContainer _container;
 
-	public BulletPool(Dictionary<BulletType, GameObject> prefabs, int initSize, Transform poolParent)
+	public BulletPool(Dictionary<BulletType, GameObject> prefabs, int initSize, Transform poolParent, DiContainer container)
 	{
-		// Log if prefabs are missing or empty
-		if (prefabs == null || prefabs.Count == 0)
-		{
-			Debug.LogError("Prefabs dictionary is null or empty.");
-			return;
-		}
-
 		_prefabs = prefabs;
 		_poolParent = poolParent;
+		_container = container;
 
 		foreach (var bulletType in prefabs.Keys)
 		{
@@ -26,7 +22,7 @@ public class BulletPool
 			for (int i = 0; i < initSize; i++)
 			{
 				Debug.Log($"Instantiating bullet prefab for {bulletType}");
-				var bullet = Object.Instantiate(_prefabs[bulletType], _poolParent);
+				var bullet = _container.InstantiatePrefab(_prefabs[bulletType], _poolParent);
 				bullet.SetActive(false);
 				_poolDict[bulletType].Push(bullet);
 			}
@@ -40,10 +36,12 @@ public class BulletPool
         {
             var bullet = _poolDict[type].Pop();
             bullet.SetActive(true);
+			_container.Inject(bullet);
             return bullet;
         }
 
-		var newBullet = Object.Instantiate(_prefabs[type], _poolParent);
+		var newBullet = _container.InstantiatePrefab(_prefabs[type], _poolParent);
+		_container.Inject(newBullet);
 		return newBullet;
 	}
 

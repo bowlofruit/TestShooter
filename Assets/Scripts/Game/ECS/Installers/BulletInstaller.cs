@@ -1,6 +1,5 @@
 using DefaultEcs;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using Zenject;
 
@@ -12,13 +11,7 @@ public class BulletInstaller : MonoInstaller
 	[SerializeField] private int _poolSize = 50;
 	[SerializeField] private Transform _poolParent;
 
-	private World _world;
-
-	[Inject]
-	private void Construct(World world)
-	{
-		_world = world;
-	}
+	private World _world = new World();
 
 	public override void InstallBindings()
 	{
@@ -29,7 +22,7 @@ public class BulletInstaller : MonoInstaller
 			{ BulletType.Piercing, _piercingBulletPrefab }
 		};
 
-		var bulletPool = new BulletPool(bulletPrefabs, _poolSize, _poolParent);
+		var bulletPool = new BulletPool(bulletPrefabs, _poolSize, _poolParent, Container);
 		Container.Bind<BulletPool>().FromInstance(bulletPool).AsSingle();
 
 		Container.Bind<IBulletFactory>().To<BulletSpawner>().AsSingle()

@@ -15,17 +15,19 @@ public class WeaponSystem : MonoBehaviour
 
 	void Update()
 	{
-		if (_inputService.LookInput.x > 0.5f)
+		int shootInput = _inputService.ShootInput;
+
+		switch (shootInput)
 		{
-			SpawnBullet(BulletType.Normal, 10f, 25f, 5f);
-		}
-		else if (_inputService.LookInput.y > 0.5f)
-		{
-			SpawnBullet(BulletType.Explosive, 8f, 50f, 3f);
-		}
-		else if (_inputService.LookInput.x < -0.5f)
-		{
-			SpawnBullet(BulletType.Piercing, 12f, 15f, 6f);
+			case 1:
+				SpawnBullet(BulletType.Normal, 10f, 25f, 5f);
+				break;
+			case 2:
+				SpawnBullet(BulletType.Explosive, 8f, 50f, 3f);
+				break;
+			case 3:
+				SpawnBullet(BulletType.Piercing, 12f, 15f, 6f);
+				break;
 		}
 	}
 

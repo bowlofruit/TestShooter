@@ -1,6 +1,6 @@
-﻿using Zenject;
+﻿using DefaultEcs;
 using UnityEngine;
-using DefaultEcs;
+using Zenject;
 
 public class BulletSpawner : IBulletFactory
 {
@@ -20,9 +20,10 @@ public class BulletSpawner : IBulletFactory
 		bulletObject.transform.position = position;
 
 		var entity = _world.CreateEntity();
-
 		entity.Set(new GameObjectComponent { Value = bulletObject });
-		entity.Set(new BulletComponent { Damage = damage, Speed = speed, Direction = direction });
+		entity.Set(new SpeedComponent { Speed = speed });
+		entity.Set(new DirectionComponent { Direction = direction });
+		entity.Set(new DamageComponent { Damage = damage });
 		entity.Set(new LifetimeComponent { RemainingTime = lifetime });
 		entity.Set(new BulletTypeComponent { Type = bulletType });
 

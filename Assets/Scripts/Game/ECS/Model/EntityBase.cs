@@ -1,5 +1,6 @@
 using DefaultEcs;
 using UnityEngine;
+using Zenject;
 
 public class EntityBase : MonoBehaviour
 {

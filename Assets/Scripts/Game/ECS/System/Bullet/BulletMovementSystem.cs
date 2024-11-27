@@ -1,6 +1,5 @@
 using DefaultEcs;
 using DefaultEcs.System;
-using UnityEngine;
 
 public class BulletMovementSystem : AEntitySetSystem<float>
 {
@@ -8,7 +7,10 @@ public class BulletMovementSystem : AEntitySetSystem<float>
 
 	public BulletMovementSystem(World world, IInputService inputService) : base(world.GetEntities()
 		.With<TransformComponent>()
-		.With<BulletComponent>()
+		.With<DamageComponent>()
+		.With<SpeedComponent>()
+		.With<DirectionComponent>()
+		.With<BulletTypeComponent>()
 		.AsSet())
 	{
 		_inputService = inputService;
@@ -17,8 +19,9 @@ public class BulletMovementSystem : AEntitySetSystem<float>
 	protected override void Update(float deltatime, in Entity entity)
 	{
 		ref var transformComponent = ref entity.Get<TransformComponent>();
-		ref var bullet = ref entity.Get<BulletComponent>();
+		ref var speedComponent = ref entity.Get<SpeedComponent>();
+		ref var directionComponent = ref entity.Get<DirectionComponent>();
 
-		transformComponent.Transform.position += bullet.Direction * bullet.Speed * deltatime;
+		transformComponent.Transform.position += speedComponent.Speed * deltatime * directionComponent.Direction;
 	}
 }
