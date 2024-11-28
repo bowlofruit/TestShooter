@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6650760619166440441}
-  - component: {fileID: 1342004604512910217}
+  - component: {fileID: 2773398260533822091}
   - component: {fileID: 7486098826793969006}
   m_Layer: 0
   m_Name: Normal Bullet
@@ -126,7 +126,7 @@ Transform:
   - {fileID: 3368638704872743187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1342004604512910217
+--- !u!114 &2773398260533822091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1681917399192640139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500df117fe813854cb872314fb0e4be8, type: 3}
+  m_Script: {fileID: 11500000, guid: c8bfe6f5ca75e6444afb9276a58b56d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _entityBase: {fileID: 7486098826793969006}
@@ -155,11 +155,11 @@ MonoBehaviour:
   Adapters:
   - {fileID: 8154086105764714547}
   - {fileID: 8889045337723545635}
+  - {fileID: 5417308414511509382}
+  - {fileID: 5600099889752934364}
   - {fileID: 2414789986364951154}
   - {fileID: 6901265379823272401}
   - {fileID: 2378861889723922634}
-  - {fileID: 5417308414511509382}
-  - {fileID: 5600099889752934364}
 --- !u!1 &1893117561959545581
 GameObject:
   m_ObjectHideFlags: 0

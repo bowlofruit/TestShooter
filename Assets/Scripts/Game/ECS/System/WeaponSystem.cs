@@ -10,7 +10,7 @@ public class WeaponSystem : AEntitySetSystem<float>
 	private Entity _playerEntity;
 
 	public WeaponSystem(World world, IBulletFactory bulletFactory, IInputService inputService) : base (world.GetEntities()
-		.With<BulletPoolTagComponent>()
+		.With<WeaponTagComponent>()
 		.AsSet())
 	{
 		_world = world;

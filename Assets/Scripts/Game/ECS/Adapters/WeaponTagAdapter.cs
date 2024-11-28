@@ -1,6 +1,6 @@
 using DefaultEcs;
 
-public class BulletPoolTagAdapter : EntityBaseComponent<BulletPoolTagComponent>
+public class WeaponTagAdapter : EntityBaseComponent<WeaponTagComponent>
 {
 	public override void Install(World world, Entity entity)
 	{
